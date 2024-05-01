@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        center {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="password"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        small {
+            color: #777;
+            font-size: 12px;
+        }
+
+        i {
+            margin-left: 5px;
+            color: green;
+        }
+
+        #spinner, #right {
+            transition: opacity 0.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+
+<center>
+    <h1>Password validation task</h1>
+    <label>Enter Password</label>
+    <input id="inputpass" type="password" onclick="pass()" oninput="pwd()">
+    <small id="advice"></small>
+    <i style="opacity: 0;" id="spinner" class="fas fa-sync-alt fa-spin"></i>
+    <i style="opacity: 0;" id="right" class="far fa-check-circle"></i>
+</center>
+
+<script>
+    function pass(){
+        let textShow = document.getElementById("advice");
+        textShow.innerHTML = "Enter 10 Digit Password";
+    }
+    
+    function pwd(){
+        let spin = document.getElementById("spinner");
+        spin.style.opacity = 1;
+
+        let check = document.getElementById("right");
+        let dhide = document.getElementById("advice");
+        dhide.style.display = "none";
+
+        let len = document.getElementById("inputpass").value.length;
+
+        if(len >= 10){
+            check.style.opacity = 1;
+            spin.style.opacity = 0;
+        } else {
+            check.style.opacity = 0;
+            spin.style.opacity = 1;
+        }
+    }
+</script>
+
+</body>
+</html>
